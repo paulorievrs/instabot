@@ -2,7 +2,7 @@
   "name": "insta",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "instagram-web-api": "^2.2.2"
+    "cron": "^1.8.2",
+    "express": "^4.17.1",
+    "instagram-web-api": "^2.2.2",
+    "moment": "^2.29.1",
+    "request": "^2.88.2",
+    "requestify": "^0.2.5",
+    "simple-get": "^4.0.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }

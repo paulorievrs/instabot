@@ -1,28 +1,35 @@
-const Instagram = require('instagram-web-api');
-const username = "paulorievrs";
-const password = "3202bol0";
+const express = require('express');
+const routes = require('./routes');
+
+// const https = require("https");
+
+const app = express();
+
+app.use(express.json());
 
 
-const client = new Instagram({ username, password })
-let next = true;
-let end_cursor = null;
-
-;(async () => {
-    while(next) {
-
-        await client.login()
-        const profile = await client.getProfile()
-        const searchedProfile = await client.getUserByUsername({ username: 'paulorievrs' })
-        const searchedId = searchedProfile.id;
-        const followsCount = searchedProfile.edge_follow.count;
-        const followedByCount = searchedProfile.edge_followed_by.count;
-        const followers = await client.getFollowers({ userId: searchedId, first: followedByCount, after: end_cursor })
-        next = followers.page_info.has_next_page;
-        end_cursor = followers.page_info.end_cursor;
-        followers.data.forEach(element => {
-            console.log(element.id);
-        });
-    }
+app.use(routes);
 
 
-})()
+app.listen(3333);
+
+
+// var fs = require('fs');
+// var http = require('http');
+// var https = require('https');
+// var privateKey  = fs.readFileSync('certificado.key', 'utf8');
+// var certificate = fs.readFileSync('certificado.cert', 'utf8');
+
+// var credentials = {key: privateKey, cert: certificate};
+// var express = require('express');
+// var app = express();
+
+// app.get('/', (req, res) => {
+//     res.send('Now using https..');
+// });
+
+// var httpServer = http.createServer(app);
+// var httpsServer = https.createServer(credentials, app);
+
+// httpServer.listen(8080);
+// httpsServer.listen(8443);
